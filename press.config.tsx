@@ -2,6 +2,7 @@ import { defineConfig } from "fumapress";
 import { fumadocsMdx } from "fumapress/adapters/mdx";
 import { metaSchema, pageSchema } from "fumapress/adapters/mdx/schema";
 import { defineDocs } from "fumadocs-mdx/macro";
+import { mcpPlugin } from "@fumapress/ai";
 
 const docs = defineDocs({
   dir: "content",
@@ -21,9 +22,8 @@ const docs = defineDocs({
 export default defineConfig({
   content: docs.toFumadocsSource(),
   site: {
-    name: "mn-extension-docs",
-    // the URL where your site is deployed, needed for SEO features like sitemap:
-    // baseUrl: "https://example.com",
+    name: "Marginnote Extension Docs",
+    baseUrl: "https://mnext.museday.top",
   },
   meta: {
     root() {
@@ -40,4 +40,5 @@ export default defineConfig({
     },
   },
 })
-  .adapters(fumadocsMdx());
+  .adapters(fumadocsMdx())
+  .plugins(mcpPlugin());
